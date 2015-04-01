@@ -19,13 +19,13 @@ In your `rebar.config`:
 This module provides some functions to write CSV data to an `IoDevice`. An `IoDevice` is what you get
 by, for example, calling [file:open](http://www.erlang.org/doc/man/file.html#open-2).
 
-The main interface to the CSV generation is `csv:row`:
+The main interface to the CSV generation is `csv_gen:row`:
 
 ```erlang
 {ok, File} = file:open("test.csv", [write]),
-csv:row(File, ["Product", "Quantity"]),
-csv:row(File, ["Coffee", 10]),
-csv:row(File, ["Tea \"Cha\" extra strong", 20]),
+csv_gen:row(File, ["Product", "Quantity"]),
+csv_gen:row(File, ["Coffee", 10]),
+csv_gen:row(File, ["Tea \"Cha\" extra strong", 20]),
 file:close(File).
 ```
 
@@ -39,7 +39,7 @@ Coffee,10
 
 This library will make sure to put quotes when appropriate (when there's a double quote, comma or newline) and to escape double quotes.
 
-The valid values for a row are integers, lists (strings) and binaries. You should convert other types to binary before invoking `csv:row`.
+The valid values for a row are integers, lists (strings) and binaries. You should convert other types to binary before invoking `csv_gen:row`.
 
 ### Generating compressed files
 
@@ -47,25 +47,25 @@ Erlang's `file:open` accepts a compressed option:
 
 ```erlang
 {ok, File} = file:open("test.csv.zip", [write, compressed]),
-csv:row(File, ["Compressed", "File"]),
+csv_gen:row(File, ["Compressed", "File"]),
 file:close(File).
 ```
 
 ### Lower-level API
 
-You can use `csv:field`, `csv:comma` and `csv:newline` to generate a CSV cell by cell:
+You can use `csv_gen:field`, `csv_gen:comma` and `csv_gen:newline` to generate a CSV cell by cell:
 
 ```erlang
 {ok, File} = file:open("test.csv", [write]),
 
-csv:field(File, "Product"),
-csv:comma(File),
-csv:field(File, "Quantity"),
-csv:newline()
+csv_gen:field(File, "Product"),
+csv_gen:comma(File),
+csv_gen:field(File, "Quantity"),
+csv_gen:newline()
 
-csv:field(File, "Coffee"),
-csv:comma(File),
-csv:field(File, 10),
+csv_gen:field(File, "Coffee"),
+csv_gen:comma(File),
+csv_gen:field(File, 10),
 
 file:close(File).
 ```

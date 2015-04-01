@@ -3,7 +3,7 @@
   {description, "An Erlang library for writing CSV files"},
   {vsn, "1"},
   {modules, [
-             csv
+             csv_gen
             ]},
   {registered, []},
   {applications, [

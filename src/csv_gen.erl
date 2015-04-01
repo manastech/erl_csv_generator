@@ -1,4 +1,4 @@
--module(csv).
+-module(csv_gen).
 
 -export([newline/1, comma/1, field/2, row/2]).
 
