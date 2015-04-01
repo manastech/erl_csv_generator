@@ -1,5 +1,7 @@
 # erl_csv_generator
 
+[![Build Status](https://travis-ci.org/manastech/erl_csv_generator.svg?branch=master)](https://travis-ci.org/manastech/erl_csv_generator)
+
 This erlang module allows you to generate CSV files in an easy way.
 
 ## Installation
