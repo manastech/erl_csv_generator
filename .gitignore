@@ -1,0 +1,5 @@
+.eunit/**
+ebin/**
+.rebar/**
+deps/**
+plt/**

@@ -1,0 +1,14 @@
+{application, erl_csv_generator,
+ [
+  {description, "An Erlang library for writing CSV files"},
+  {vsn, "1"},
+  {modules, [
+             csv
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
