@@ -15,7 +15,7 @@ field(File, Value) when is_binary(Value) ->
       file:write(File, Value);
     _ ->
       file:write(File, "\""),
-      file:write(File, binary:replace(Value, <<"\"">>, <<"\"\"">>)),
+      file:write(File, binary:replace(Value, <<"\"">>, <<"\"\"">>, [global])),
       file:write(File, "\"")
   end;
 field(File, Value) when is_list(Value) ->
