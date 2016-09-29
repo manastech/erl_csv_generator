@@ -19,7 +19,7 @@ field(File, Value) when is_binary(Value) ->
       file:write(File, "\"")
   end;
 field(File, Value) when is_list(Value) ->
-  field(File, list_to_binary(Value));
+  field(File, unicode:characters_to_binary(Value));
 field(File, Value) when is_integer(Value) ->
   file:write(File, integer_to_list(Value));
 field(File, Value) when is_atom(Value) ->
