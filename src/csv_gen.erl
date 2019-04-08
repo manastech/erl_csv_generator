@@ -8,6 +8,8 @@ newline(File) ->
 comma(File) ->
   file:write(File, ",").
 
+field(File, Value) when is_tuple(Value) ->
+  file:write(File, io_lib:format("~p",[Value]));
 field(File, Value) when is_binary(Value) ->
   Match = binary:match(Value, [<<",">>, <<"\n">>, <<"\"">>]),
   case Match of
@@ -27,6 +29,9 @@ field(File, Value) when is_atom(Value) ->
 field(File, Value) when is_float(Value) ->
   file:write(File, io_lib:format("~f",[Value])).
 
+row(File, Elem) when is_tuple(Elem) ->
+  ListElem = tuple_to_list(Elem),
+  row(File, ListElem);
 row(File, []) ->
   newline(File);
 row(File, [Value]) ->
