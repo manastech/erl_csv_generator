@@ -9,7 +9,9 @@ comma(File) ->
   file:write(File, ",").
 
 field(File, Value) when is_tuple(Value) ->
-  file:write(File, io_lib:format("~p",[Value]));
+  file:write(File, "\""),
+  file:write(File, io_lib:format("~p",[Value])),
+  file:write(File, "\"");
 field(File, Value) when is_binary(Value) ->
   Match = binary:match(Value, [<<",">>, <<"\n">>, <<"\"">>]),
   case Match of
