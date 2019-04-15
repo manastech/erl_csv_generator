@@ -29,7 +29,9 @@ field(File, Value) when is_integer(Value) ->
 field(File, Value) when is_atom(Value) ->
   file:write(File, io_lib:write_atom(Value));
 field(File, Value) when is_float(Value) ->
-  file:write(File, io_lib:format("~f",[Value])).
+  file:write(File, io_lib:format("~f",[Value]));
+field(File, Value) ->
+  file:write(File, io_lib:format("\"~p\"",[Value])).
 
 row(File, Elem) when is_tuple(Elem) ->
   ListElem = tuple_to_list(Elem),
